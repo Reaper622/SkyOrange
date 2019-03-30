@@ -1,5 +1,4 @@
 export default [
-  // investor 投资者
   {
     path: '/',
     component: '../layouts/BasicLayout',
@@ -7,13 +6,13 @@ export default [
       // 直接访问默认跳转至投资者资金页面
       {
         // investor money
-        path: '/investor',
+        path: '/investor/',
         name: '投资者资金',
         icon: 'money-collect',
         routes: [
           // 资金明细
           {
-            path: '/investor/money',
+            path: '/investor/info',
             component: './Dashboard/Analysis',
             name: '投资者资金明细'
           },
@@ -33,10 +32,10 @@ export default [
         routes: [
           // 投资者信息明细
           {
-            path: '/inversotrinfo/info',
+            path: '/investorinfo/info',
             name: '投资者信息明细',
             icon: 'solution',
-            component: './Account/Settings/Info'
+            component: './Account/Settings/BaseView',
           }
         ]
       },
