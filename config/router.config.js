@@ -3,7 +3,26 @@ export default [
     path: '/',
     component: '../layouts/BasicLayout',
     routes: [
-      // 直接访问默认跳转至投资者资金页面
+      {path: '/', redirect: '/bulletionboard'},
+      // 直接访问默认跳转公告信息
+      {
+        path: '/bulletionboard',
+        name: '公告信息',
+        icon: 'notification',
+        routes: [
+          {
+            path: '/bulletionboard/info',
+            name: '公告信息详情',
+            component: './List/CardList',
+          },
+          {
+            path: '/bulletionboard/management',
+            name: '公告信息管理',
+            component: './List/TableList'
+          }
+        ]
+      },
+      // 投资者相关页面
       {
         // investor money
         path: '/investor/',
