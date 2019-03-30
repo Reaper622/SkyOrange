@@ -3,20 +3,20 @@ export default [
     path: '/',
     component: '../layouts/BasicLayout',
     routes: [
-      {path: '/', redirect: '/bulletionboard'},
+      {path: '/', redirect: '/bulletion-board'},
       // 直接访问默认跳转公告信息
       {
-        path: '/bulletionboard',
+        path: '/bulletion-board',
         name: '公告信息',
         icon: 'notification',
         routes: [
           {
-            path: '/bulletionboard/info',
+            path: '/bulletion-board/info',
             name: '公告信息详情',
             component: './List/CardList',
           },
           {
-            path: '/bulletionboard/management',
+            path: '/bulletion-board/management',
             name: '公告信息管理',
             component: './List/TableList'
           }
@@ -45,16 +45,62 @@ export default [
       },
       {
         // investor info
-        path: '/investorinfo',
+        path: '/investor-info',
         name: '投资者信息',
         icon: 'user',
         routes: [
           // 投资者信息明细
           {
-            path: '/investorinfo/info',
+            path: '/investor-info/info',
             name: '投资者信息明细',
             icon: 'solution',
             component: './Account/Settings/BaseView',
+          }
+        ]
+      },
+      // 系统管理信息
+      {
+        // system management
+        path: '/system',
+        name: '系统管理',
+        icon: 'tool',
+        routes: [
+          // 系统资金概况
+          {
+            path: '/system/money-situation',
+            name: '系统资金概况',
+            component: './Dashboard/Analysis'
+          },
+          // 投资者管理
+          {
+            path: '/system/investor-management',
+            name: '投资者管理',
+            routes: [
+              // 投资者资金流动明细
+              {
+                path: '/system/investor-management/money-detail',
+                name: '投资者资金流动明细',
+                component: './List/TableList'
+              },
+              // 提款申请审批
+              {
+                path: '/system/investor-management/payout-request',
+                name: '提款申请审批',
+                component: './List/BasicList'
+              },
+              // 投资者信息管理
+              {
+                path: '/system/investor-management/info-management',
+                name: '投资者信息管理',
+                component: './List/CardList'
+              }
+            ]
+          },
+          // 内部管理文件
+          {
+            path: '/system/file-management',
+            name: '内部管理文件',
+            component: './Forms/AdvancedForm'
           }
         ]
       },
