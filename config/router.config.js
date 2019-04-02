@@ -3,7 +3,7 @@ export default [
     path: '/',
     component: '../layouts/BasicLayout',
     routes: [
-      {path: '/', redirect: '/bulletion-board'},
+      {path: '/', redirect: '/bulletion-board/info'},
       // 直接访问默认跳转公告信息
       {
         path: '/bulletion-board',
@@ -32,7 +32,7 @@ export default [
           // 资金明细
           {
             path: '/investor/info',
-            component: './Dashboard/Analysis',
+            component: './Investor/InvestorMoney',
             name: '投资者资金明细'
           },
           // 资金管理
