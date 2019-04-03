@@ -12,8 +12,8 @@ export default [
         routes: [
           {
             path: '/bulletion-board/info',
-            name: '公告信息详情',
-            component: './List/CardList',
+            name: '公告信息',
+            component: './BulletionBoard/BulletionBoard',
           },
           {
             path: '/bulletion-board/management',
