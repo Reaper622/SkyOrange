@@ -38,7 +38,7 @@ export default [
           // 资金管理
           {
             path: '/investor/management',
-            component: './Dashboard/Monitor',
+            component: './Investor/InvestorManagement',
             name: '投资者资金管理',
           }
         ]
