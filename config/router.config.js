@@ -18,7 +18,7 @@ export default [
           {
             path: '/bulletion-board/management',
             name: '公告信息管理',
-            component: './List/TableList'
+            component: './BulletionBoard/BulletionBoardManagement'
           }
         ]
       },
@@ -69,7 +69,7 @@ export default [
           {
             path: '/system/money-situation',
             name: '系统资金概况',
-            component: './Dashboard/Analysis'
+            component: './System/SystemMoney'
           },
           // 投资者管理
           {
@@ -80,7 +80,7 @@ export default [
               {
                 path: '/system/investor-management/money-detail',
                 name: '投资者资金流动明细',
-                component: './List/TableList'
+                component: './System/SystemInvestor/InvestorMoneyDetail'
               },
               // 提款申请审批
               {
