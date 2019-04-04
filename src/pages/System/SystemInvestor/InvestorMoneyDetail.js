@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Radio, Select, List, Table } from 'antd'
+import { Form, Button, Radio, Select, List, Table } from 'antd'
 import RadioGroup from 'antd/lib/radio/group';
 import Yuan from '@/utils/Yuan'
 
 const { Option } = Select;
-const { Item } = List;
 
 class InvestorMoneyDetail extends Component {
   constructor(props) {
@@ -40,7 +39,6 @@ class InvestorMoneyDetail extends Component {
   }
 
   handleTableChange = (pagination, filters, sorter) => {
-    console.log(sorter);
     this.setState({
       sortedInfo: sorter
     })

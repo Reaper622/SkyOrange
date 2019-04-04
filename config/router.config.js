@@ -92,7 +92,7 @@ export default [
               {
                 path: '/system/investor-management/info-management',
                 name: '投资者信息管理',
-                component: './List/CardList'
+                component: './System/SystemInvestor/InvestorInfoManagement'
               }
             ]
           },
