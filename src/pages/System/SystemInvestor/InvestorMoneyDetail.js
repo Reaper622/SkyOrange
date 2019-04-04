@@ -1,16 +1,29 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Radio, Select } from 'antd'
+import { Form, Input, Button, Radio, Select, List, Table } from 'antd'
 import RadioGroup from 'antd/lib/radio/group';
 import Yuan from '@/utils/Yuan'
 
 const { Option } = Select;
+const { Item } = List;
 
 class InvestorMoneyDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sortedInfo: null,
       type: '',
-      moneyBelow: 1000
+      moneyBelow: 1000,
+      infos: [
+        {id:1, type:'转入', money: 1000, investorName: '张三'},
+        {id:2, type:'转出', money: 3000, investorName: '张三'},
+        {id:3, type:'投资', money: 3000, investorName: '张三'},
+        {id:4, type:'转入', money: 1000, investorName: '李四'},
+        {id:5, type:'转出', money: 3000, investorName: '李四'},
+        {id:6, type:'投资', money: 3000, investorName: '李四'},
+        {id:7, type:'转入', money: 1000, investorName: '王五'},
+        {id:8, type:'转出', money: 3000, investorName: '王五'},
+        {id:9, type:'投资', money: 3000, investorName: '王五'},
+      ]
     }
   }
 
@@ -26,7 +39,17 @@ class InvestorMoneyDetail extends Component {
     })
   }
 
+  handleTableChange = (pagination, filters, sorter) => {
+    console.log(sorter);
+    this.setState({
+      sortedInfo: sorter
+    })
+  }
+
   render() {
+    const { infos } = this.state;
+    let {sortedInfo } = this.state;
+    sortedInfo = sortedInfo || {};
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 8, offset: 5 },
@@ -34,6 +57,27 @@ class InvestorMoneyDetail extends Component {
     const buttonItemLayout = {
       wrapperCol: { span: 14, offset: 10 },
     };
+    const tableClomuns = [
+      {
+        title: '类型',
+        dataIndex: 'type',
+        key: 'type'
+      },
+      {
+        title:'资金',
+        dataIndex: 'money',
+        key: 'money',
+        sorter: (a, b) => a.money - b.money,
+        sortOrder: sortedInfo.columnKey === 'money' && sortedInfo.order
+      },
+      {
+        title: '投资人姓名',
+        dataIndex: 'investorName',
+        key: 'investorName',
+        sorter: (a, b) => a.investorName.length - b.investorName.length,
+        sortOrder: sortedInfo.columnKey === 'investorName' && sortedInfo.order
+      }
+    ]
     return (
       <div>
         <Form layout="inline">
@@ -67,6 +111,7 @@ class InvestorMoneyDetail extends Component {
             <Button type="primary" icon="search">查找</Button>
           </Form.Item>
         </Form>
+        <Table style={{background: '#ffffff', marginTop: 50}} columns={tableClomuns} dataSource={infos} onChange={this.handleTableChange} />
       </div>
     )
   }
