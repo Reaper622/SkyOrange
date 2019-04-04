@@ -86,7 +86,7 @@ export default [
               {
                 path: '/system/investor-management/payout-request',
                 name: '提款申请审批',
-                component: './List/BasicList'
+                component: './System/SystemInvestor/WithDrawals'
               },
               // 投资者信息管理
               {
