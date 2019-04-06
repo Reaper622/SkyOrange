@@ -60,6 +60,9 @@ if (APP_TYPE === 'site') {
 
 export default {
   // add for transfer to umi
+  history: 'hash',
+  base:'./',
+  publicPath: './',
   plugins,
   define: {
     APP_TYPE: APP_TYPE || '',
@@ -110,7 +113,7 @@ export default {
     },
   },
   manifest: {
-    basePath: '/',
+    basePath: '/dist',
   },
 
   chainWebpack: webpackPlugin,

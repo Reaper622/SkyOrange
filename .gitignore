@@ -9,6 +9,7 @@ _roadhog-api-doc
 # production
 /dist
 /.vscode
+/skyorange
 
 # misc
 .DS_Store

@@ -54,7 +54,7 @@ export default [
             path: '/investor-info/info',
             name: '投资者信息明细',
             icon: 'solution',
-            component: './Account/Settings/BaseView',
+            component: './Investor/InvestorInfoManagement',
           }
         ]
       },

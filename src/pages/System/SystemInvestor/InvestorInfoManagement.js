@@ -61,7 +61,6 @@ class InvestorInfoManagement extends Component{
             </Col>
           ))}
         </Row>
-
       </div>
     )
   }

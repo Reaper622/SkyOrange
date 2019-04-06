@@ -20,27 +20,28 @@ for (let i = 0; i <= 12; i += 1) {
 
 // 定义表格要显示的内容
 const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  key: 'name',
+  title: '类型',
+  dataIndex: 'type',
+  key: 'type',
   render: text => <a href="">{text}</a>,
 }, {
-  title: 'Age',
-  dataIndex: 'age',
-  key: 'age',
+  title: '额度',
+  dataIndex: 'money',
+  key: 'money',
+  render: text => <Yuan>{text}</Yuan>
 }, {
-  title: 'Address',
-  dataIndex: 'address',
-  key: 'address',
+  title: '意向',
+  dataIndex: 'direction',
+  key: 'direction',
 }, {
-  title: 'Tags',
+  title: '标注',
   key: 'tags',
   dataIndex: 'tags',
   render: tags => (
     <span>
       {tags.map(tag => {
         let color = tag.length > 5 ? 'geekblue' : 'green';
-        if (tag === 'loser') {
+        if (tag === '不明智') {
           color = 'volcano';
         }
         return <Tag color={color} key={tag}>{tag.toUpperCase()}</Tag>;
@@ -48,35 +49,35 @@ const columns = [{
     </span>
   ),
 }, {
-  title: 'Action',
+  title: '操作',
   key: 'action',
-  render: (text, record) => (
+  render: () => (
     <span>
-      <a href="">Invite {record.name}</a>
+      <a href="">查看详情</a>
       <Divider type="vertical" />
-      <a href="">Delete</a>
+      <a href="">申诉</a>
     </span>
   ),
 }];
 
 const data = [{
   key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park',
-  tags: ['nice', 'developer'],
+  type: '转入',
+  money: 1000,
+  direction: '收益',
+  tags: ['好', '有意义'],
 }, {
   key: '2',
-  name: 'Jim Green',
-  age: 42,
-  address: 'London No. 1 Lake Park',
-  tags: ['loser'],
+  type: '转出',
+  money: 3000,
+  direction: '投资',
+  tags: ['不明智'],
 }, {
   key: '3',
-  name: 'Joe Black',
-  age: 32,
-  address: 'Sidney No. 1 Lake Park',
-  tags: ['cool', 'teacher'],
+  type: '转入',
+  money: 5000,
+  direction: '收益',
+  tags: ['好', '有意义'],
 }];
 
 @connect()
@@ -162,7 +163,7 @@ class InvestorMoney extends Component {
             </Card>
           </Col>
         </Row>
-        <Table columns={columns} dataSource={data} />
+        <Table columns={columns} dataSource={data} style={{background: '#fff'}} />
       </GridContent>
     )
   }
