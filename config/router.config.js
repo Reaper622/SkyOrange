@@ -1,4 +1,15 @@
 export default [
+  // user
+  {
+    path: '/user',
+    component: '../layouts/UserLayout',
+    routes: [
+      { path: '/user', redirect: '/user/login'},
+      { path: '/user/login', name: 'login', component: './User/Login'},
+      { component: '404'}
+    ]
+  },
+  // 主题应用
   {
     path: '/',
     component: '../layouts/BasicLayout',

@@ -1,80 +1,41 @@
-import { routerRedux } from 'dva/router';
+import { routerRedux } from 'dva/router'
 import { stringify } from 'qs';
-import { fakeAccountLogin, getFakeCaptcha } from '@/services/api';
-import { setAuthority } from '@/utils/authority';
-import { getPageQuery } from '@/utils/utils';
-import { reloadAuthorized } from '@/utils/Authorized';
+import { fakeAccountLogin } from '@/services/api'
+import { setAuthority } from '@/utils/authority'
 
 export default {
   namespace: 'login',
 
-  state: {
+  state : {
     status: undefined,
   },
 
-  effects: {
-    *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
-      yield put({
-        type: 'changeLoginStatus',
-        payload: response,
-      });
-      // Login successfully
-      if (response.status === 'ok') {
-        reloadAuthorized();
-        const urlParams = new URL(window.location.href);
-        const params = getPageQuery();
-        let { redirect } = params;
-        if (redirect) {
-          const redirectUrlParams = new URL(redirect);
-          if (redirectUrlParams.origin === urlParams.origin) {
-            redirect = redirect.substr(urlParams.origin.length);
-            if (redirect.match(/^\/.*#/)) {
-              redirect = redirect.substr(redirect.indexOf('#') + 1);
-            }
-          } else {
-            redirect = null;
-          }
-        }
-        yield put(routerRedux.replace(redirect || '/'));
-      }
-    },
-
-    *getCaptcha({ payload }, { call }) {
-      yield call(getFakeCaptcha, payload);
-    },
-
-    *logout(_, { put }) {
-      yield put({
-        type: 'changeLoginStatus',
-        payload: {
-          status: false,
-          currentAuthority: 'guest',
-        },
-      });
-      reloadAuthorized();
-      // redirect
-      if (window.location.pathname !== '/user/login') {
-        yield put(
-          routerRedux.replace({
-            pathname: '/user/login',
-            search: stringify({
-              redirect: window.location.href,
-            }),
-          })
-        );
-      }
-    },
-  },
-
+  // 同步更新
   reducers: {
-    changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
+    changeLoginStatus(state, {payload}) {
+      // 设置权限
+      setAuthority(payload.currentAuthority)
       return {
         ...state,
         status: payload.status,
-        type: payload.type,
-      };
-    },
+        type: payload.type
+      }
+    }
   },
-};
+
+  // 异步更新
+  effects: {
+    // payload为传递的参数
+    *login({payload}, {call, put}) {
+      const response = yield call(fakeAccountLogin, payload);
+      yield put({
+        type: 'changeLoginStatus',
+        payload: response
+      })
+      // 成功登录
+      if (response.status === 'ok') {
+        yield put(routerRedux.replace('/'))
+      }
+    }
+  }
+}
