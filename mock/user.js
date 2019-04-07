@@ -90,7 +90,7 @@ export default {
       });
       return;
     }
-    if (password === 'skyorange' && userName === 'Trader') {
+    if (password === 'skyorange' && userName === 'trader') {
       res.send({
         status: 'ok',
         type,

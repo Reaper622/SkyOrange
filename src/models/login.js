@@ -3,6 +3,7 @@ import { stringify } from 'qs';
 import { fakeAccountLogin } from '@/services/api'
 import { setAuthority } from '@/utils/authority'
 import { reloadAuthorized } from '@/utils/Authorized';
+import { getPageQuery } from '@/utils/utils';
 
 export default {
   namespace: 'login',
@@ -36,7 +37,40 @@ export default {
       // 成功登录
       if (response.status === 'ok') {
         reloadAuthorized();
-        yield put(routerRedux.replace('/'))
+        const urlParams = new URL(window.location.href);
+        const params = getPageQuery();
+        let { redirect } = params;
+        if (redirect) {
+          const redirectUrlParams = new URL(redirect);
+          if (redirectUrlParams.origin === urlParams.origin) {
+            redirect = redirect.substr(urlParams.origin.length);
+            if (redirect.match(/^\/.*#/)) {
+              redirect = redirect.substr(redirect.indexOf('#') + 1);
+            }
+          } else {
+            redirect = null;
+          }
+        }
+        yield put(routerRedux.replace(redirect || '/'));
+      }
+    },
+    // 注销操作
+    *logout(_, {put}) {
+      yield put({
+        type: 'changeLoginStatus',
+        payload: {
+          status: false,
+          currentAuthority: 'guest'
+        },
+      });
+      reloadAuthorized();
+      // 重定向至登录页面
+      if (window.location.pathname !== '/user/login') {
+        yield put(
+          routerRedux.replace({
+            pathname: '/user/login'
+          })
+        )
       }
     }
   }
