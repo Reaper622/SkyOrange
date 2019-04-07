@@ -2,13 +2,13 @@
 export default {
   // 支持值为 Object 和 Array
   'GET /api/currentUser': {
-    name: 'Serati Ma',
+    name: 'Sky Orange',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
     email: 'antdesign@alipay.com',
     signature: '海纳百川，有容乃大',
     title: '交互专家',
-    group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
+    group: 'Sky Orange',
     tags: [
       {
         key: '0',
@@ -82,11 +82,27 @@ export default {
       });
       return;
     }
-    if (password === 'skyorange' && userName === 'user') {
+    if (password === 'skyorange' && userName === 'investor') {
       res.send({
         status: 'ok',
         type,
-        currentAuthority: 'user',
+        currentAuthority: 'investor',
+      });
+      return;
+    }
+    if (password === 'skyorange' && userName === 'Trader') {
+      res.send({
+        status: 'ok',
+        type,
+        currentAuthority: 'trader',
+      });
+      return;
+    }
+    if (password === 'skyorange' && userName === 'shareholder') {
+      res.send({
+        status: 'ok',
+        type,
+        currentAuthority: 'shareholder',
       });
       return;
     }

@@ -67,7 +67,7 @@ class LoginPage extends Component {
                 this.renderMessage('无效的信息')}
             <UserName
               name="userName"
-              placeholder="输入用户名，普通用户为 user 管理员为 admin"
+              placeholder="investor trader shareholder admin"
               rules={[
                 {
                   required: true,

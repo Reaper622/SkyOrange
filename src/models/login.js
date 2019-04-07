@@ -2,6 +2,7 @@ import { routerRedux } from 'dva/router'
 import { stringify } from 'qs';
 import { fakeAccountLogin } from '@/services/api'
 import { setAuthority } from '@/utils/authority'
+import { reloadAuthorized } from '@/utils/Authorized';
 
 export default {
   namespace: 'login',
@@ -34,6 +35,7 @@ export default {
       })
       // 成功登录
       if (response.status === 'ok') {
+        reloadAuthorized();
         yield put(routerRedux.replace('/'))
       }
     }

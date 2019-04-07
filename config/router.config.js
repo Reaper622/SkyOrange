@@ -13,6 +13,8 @@ export default [
   {
     path: '/',
     component: '../layouts/BasicLayout',
+    Routes: ['src/pages/Authorized'],
+    authority: ['admin', 'investor', 'trader', 'shareholder'],
     routes: [
       {path: '/', redirect: '/bulletion-board/info'},
       // 直接访问默认跳转公告信息
@@ -29,7 +31,8 @@ export default [
           {
             path: '/bulletion-board/management',
             name: '公告信息管理',
-            component: './BulletionBoard/BulletionBoardManagement'
+            component: './BulletionBoard/BulletionBoardManagement',
+            authority: ['admin']
           }
         ]
       },
@@ -39,6 +42,7 @@ export default [
         path: '/investor/',
         name: '投资者资金',
         icon: 'money-collect',
+        authority: ['investor'],
         routes: [
           // 资金明细
           {
@@ -59,6 +63,7 @@ export default [
         path: '/investor-info',
         name: '投资者信息',
         icon: 'user',
+        authority: ['investor'],
         routes: [
           // 投资者信息明细
           {
@@ -75,6 +80,7 @@ export default [
         path: '/system',
         name: '系统管理',
         icon: 'tool',
+        authority: ['admin', 'trader','shareholder'],
         routes: [
           // 系统资金概况
           {
@@ -86,24 +92,28 @@ export default [
           {
             path: '/system/investor-management',
             name: '投资者管理',
+            authority: ['admin'],
             routes: [
               // 投资者资金流动明细
               {
                 path: '/system/investor-management/money-detail',
                 name: '投资者资金流动明细',
-                component: './System/SystemInvestor/InvestorMoneyDetail'
+                component: './System/SystemInvestor/InvestorMoneyDetail',
+                authority: ['admin']
               },
               // 提款申请审批
               {
                 path: '/system/investor-management/payout-request',
                 name: '提款申请审批',
-                component: './System/SystemInvestor/WithDrawals'
+                component: './System/SystemInvestor/WithDrawals',
+                authority: ['admin']
               },
               // 投资者信息管理
               {
                 path: '/system/investor-management/info-management',
                 name: '投资者信息管理',
-                component: './System/SystemInvestor/InvestorInfoManagement'
+                component: './System/SystemInvestor/InvestorInfoManagement',
+                authority: ['admin']
               }
             ]
           },
@@ -111,7 +121,8 @@ export default [
           {
             path: '/system/file-management',
             name: '内部管理文件',
-            component: './Forms/AdvancedForm'
+            component: './Forms/AdvancedForm',
+            authority: ['admin']
           }
         ]
       },
