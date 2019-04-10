@@ -61,6 +61,30 @@ const user = [
   '仲尼',
 ];
 
+const tradeItems = [
+  {
+    item: '对象名称1',
+    ask: 10000,
+    bid: 20000,
+    high: 30000,
+    low: 5000,
+    position: 123456,
+    floating: 1234567,
+    avgPrice: 123456
+  },
+  {
+    item: '对象名称2',
+    ask: 10000,
+    bid: 20000,
+    high: 30000,
+    low: 5000,
+  }
+]
+
+function fakeTradeItems(req, res) {
+  return res.json(tradeItems);
+}
+
 function fakeList(count) {
   const list = [];
   for (let i = 0; i < count; i += 1) {
@@ -333,4 +357,5 @@ export default {
   'GET /api/fake_list': getFakeList,
   'POST /api/fake_list': postFakeList,
   'GET /api/captcha': getFakeCaptcha,
+  'GET /api/fake_trade_items': fakeTradeItems
 };

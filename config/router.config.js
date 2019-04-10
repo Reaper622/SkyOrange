@@ -126,6 +126,20 @@ export default [
           }
         ]
       },
+      // 交易对象处理
+      {
+        path: '/tradeitem',
+        name: '交易对象信息',
+        icon: 'wallet',
+        authority: ['trader', 'shareholder', 'admin'],
+        routes: [
+          {
+            path: '/tradeitem/detail',
+            name: '交易对象价格明细',
+            component: './TradeItemInfo/TradeItemInfoDetail'
+          }
+        ]
+      },
       // 404页面
       {component: '404'}
     ]
