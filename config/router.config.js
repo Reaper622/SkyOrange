@@ -137,6 +137,12 @@ export default [
             path: '/tradeitem/detail',
             name: '交易对象价格明细',
             component: './TradeItemInfo/TradeItemInfoDetail'
+          },
+          {
+            path: '/tradeitem/detail/:id',
+            name: '单个交易对象',
+            component: './TradeItemInfo/SingleDetail',
+            hideInMenu: true
           }
         ]
       },

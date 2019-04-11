@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-
+import router from 'umi/router'
 import { Table } from 'antd'
 import { connect } from 'dva';
+
+import styles from './TradeItemInfoDetail.less'
 
 
 
@@ -14,7 +16,7 @@ class TradeItemInfoDetail extends Component {
   constructor(props){
     super(props);
     this.state = {
-      columns : [
+     columns : [
         {
           title: '对象名称',
           dataIndex: 'item',
@@ -54,6 +56,13 @@ class TradeItemInfoDetail extends Component {
           title: '头寸均价',
           dataIndex: 'avgPrice',
           key: 'avgPrice'
+        },
+        {
+          title: '操作',
+          key: 'action',
+          render: (text, item) => (
+            <span className={styles.linkItem} onClick={() => this.checkDetail(item.item)}>查看详情</span>
+          )
         }
       ]
     }
@@ -69,6 +78,10 @@ class TradeItemInfoDetail extends Component {
     dispatch({
       type: 'trade/getTradeItems',
     })
+  }
+
+  checkDetail = (id) => {
+    router.push(`/tradeitem/detail/${id}`)
   }
 
   render() {
