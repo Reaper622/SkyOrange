@@ -146,6 +146,20 @@ export default [
           }
         ]
       },
+      // 交易情况
+      {
+        path: '/tradesit',
+        name: '交易情况',
+        icon: 'solution',
+        authority: ['admin'],
+        routes: [
+          {
+            path: '/tradesit/detail',
+            name: '正在进行的交易明细',
+            component: './TradeSituation/TradeSituationDetail'
+          }
+        ]
+      },
       // 404页面
       {component: '404'}
     ]
