@@ -157,6 +157,11 @@ export default [
             path: '/tradesit/detail',
             name: '正在进行的交易明细',
             component: './TradeSituation/TradeSituationDetail'
+          },
+          {
+            path: '/tradesit/history',
+            name: '历史交易记录',
+            component: './TradeSituation/HistoryTrade'
           }
         ]
       },

@@ -126,5 +126,9 @@ export async function getFakeCaptcha(mobile) {
 }
 
 export async function getFakeTradeItems() {
-  return request('/api/fake_trade_items')
+  return request('/api/fake_trade_items');
+}
+
+export async function getHistoryTrade() {
+  return request('/api/fake_history_trade');
 }

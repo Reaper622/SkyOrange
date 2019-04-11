@@ -345,6 +345,91 @@ function getFakeCaptcha(req, res) {
   return res.json('captcha-xxx');
 }
 
+const historyTrade = [
+  {
+    tradeID: 0,
+    accountID: 0,
+    solutionID: 0,
+    item: '黄金',
+    position: 1000,
+    direction: '买',
+    price: 100000,
+    income: 10000,
+    commission: 2000,
+    time: '2019-1-1',
+    remarks: '这是测试数据'
+  },
+  {
+    tradeID: 1,
+    accountID: 1,
+    solutionID: 1,
+    item: '黄金',
+    position: 1000,
+    direction: '买',
+    price: 100000,
+    income: 10000,
+    commission: 2000,
+    time: '2019-2-1',
+    remarks: '这是测试数据'
+  },
+  {
+    tradeID: 2,
+    accountID: 2,
+    solutionID: 2,
+    item: '黄金',
+    position: 1000,
+    direction: '买',
+    price: 100000,
+    income: 10000,
+    commission: 2000,
+    time: '2019-3-1',
+    remarks: '这是测试数据'
+  },
+  {
+    tradeID: 3,
+    accountID: 3,
+    solutionID: 3,
+    item: '黄金',
+    position: 1000,
+    direction: '买',
+    price: 100000,
+    income: 10000,
+    commission: 2000,
+    time: '2019-4-1',
+    remarks: '这是测试数据'
+  },
+  {
+    tradeID: 4,
+    accountID: 4,
+    solutionID: 4,
+    item: '黄金',
+    position: 1000,
+    direction: '买',
+    price: 100000,
+    income: 10000,
+    commission: 2000,
+    time: '2019-4-10',
+    remarks: '这是测试数据'
+  },
+  {
+    tradeID: 5,
+    accountID: 5,
+    solutionID: 5,
+    item: '黄金',
+    position: 1000,
+    direction: '买',
+    price: 100000,
+    income: 10000,
+    commission: 2000,
+    time: '2019-4-11',
+    remarks: '这是测试数据'
+  }
+]
+
+function getHistoryTrade(req, res) {
+  return res.json(historyTrade)
+}
+
 export default {
   'GET /api/project/notice': getNotice,
   'GET /api/activities': getActivities,
@@ -357,5 +442,6 @@ export default {
   'GET /api/fake_list': getFakeList,
   'POST /api/fake_list': postFakeList,
   'GET /api/captcha': getFakeCaptcha,
-  'GET /api/fake_trade_items': fakeTradeItems
+  'GET /api/fake_trade_items': fakeTradeItems,
+  'GET /api/fake_history_trade': getHistoryTrade
 };
