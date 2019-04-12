@@ -162,6 +162,11 @@ export default [
             path: '/tradesit/history',
             name: '历史交易记录',
             component: './TradeSituation/HistoryTrade'
+          },
+          {
+            path: '/tradesit/analysis',
+            name: '交易统计分析',
+            component: './TradeSituation/TradeAnalysis'
           }
         ]
       },
