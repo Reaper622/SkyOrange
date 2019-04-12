@@ -55,13 +55,13 @@ class SystemMoney extends Component {
               >
                 <span>
                   收入
-                  <Trend flag="up" syle={{marginLeft:8, color: "rgba(0,0,0,.85)"}}>
+                  <Trend flag="up" style={{marginLeft:8, color: "rgba(0,0,0,.85)"}}>
                     12%
                   </Trend>
                 </span>
                 <span>
                   支出
-                  <Trend flag="down" syle={{marginLeft:8, color: "rgba(0,0,0,.85)"}}>
+                  <Trend flag="down" style={{marginLeft:8, color: "rgba(0,0,0,.85)"}}>
                     12%
                   </Trend>
                 </span>

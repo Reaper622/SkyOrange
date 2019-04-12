@@ -170,6 +170,20 @@ export default [
           }
         ]
       },
+      // 交易方案管理
+      {
+        path: '/tradeplan',
+        name: '交易方案管理',
+        icon: 'project',
+        authority: ['admin'],
+        routes: [
+          {
+            path: '/tradeplan/total',
+            name: '交易方案总体运行情况',
+            component: './TradePlan/TradePlanSituation'
+          }
+        ]
+      },
       // 404页面
       {component: '404'}
     ]

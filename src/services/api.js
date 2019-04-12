@@ -132,3 +132,7 @@ export async function getFakeTradeItems() {
 export async function getHistoryTrade() {
   return request('/api/fake_history_trade');
 }
+
+export async function getTradePlans() {
+  return request('/api/fake_plans');
+}

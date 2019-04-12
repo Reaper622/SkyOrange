@@ -430,6 +430,48 @@ function getHistoryTrade(req, res) {
   return res.json(historyTrade)
 }
 
+const fakePlans = [
+  {
+    solutionID: 1,
+    solutionName: '交易方案1',
+    status: 1,
+    tradeMoney: 2000,
+    tradePerson: '交易人1'
+  },
+  {
+    solutionID: 2,
+    solutionName: '交易方案2',
+    status: 1,
+    tradeMoney: 2000,
+    tradePerson: '交易人2'
+  },
+  {
+    solutionID: 3,
+    solutionName: '交易方案3',
+    status: 1,
+    tradeMoney: 2000,
+    tradePerson: '交易人3'
+  },
+  {
+    solutionID: 4,
+    solutionName: '交易方案4',
+    status: 1,
+    tradeMoney: 8000,
+    tradePerson: '交易人4'
+  },
+  {
+    solutionID: 5,
+    solutionName: '交易方案5',
+    status: 0,
+    tradeMoney: 5000,
+    tradePerson: '交易人5'
+  }
+]
+
+function getFakePlans (req, res) {
+  return res.json(fakePlans)
+}
+
 export default {
   'GET /api/project/notice': getNotice,
   'GET /api/activities': getActivities,
@@ -443,5 +485,6 @@ export default {
   'POST /api/fake_list': postFakeList,
   'GET /api/captcha': getFakeCaptcha,
   'GET /api/fake_trade_items': fakeTradeItems,
-  'GET /api/fake_history_trade': getHistoryTrade
+  'GET /api/fake_history_trade': getHistoryTrade,
+  'GET /api/fake_plans': getFakePlans
 };
