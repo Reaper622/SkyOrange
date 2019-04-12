@@ -187,6 +187,12 @@ export default [
             name: '单个交易方案运行情况',
             component: './TradePlan/PlanDetail',
             hideInMenu: true
+          },
+          {
+            path: '/tradeplan/deside/:id',
+            name: '单个交易方案决策',
+            component: './TradePlan/DesideDetail',
+            hideInMenu: true
           }
         ]
       },

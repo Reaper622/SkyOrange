@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'dva'
 import Yuan from '@/utils/Yuan'
-import { Row, Col, Icon, Tooltip } from 'antd'
+import { Row, Col, Icon, Tooltip, Button } from 'antd'
 import numeral from 'numeral'
 import { ChartCard, Field } from '@/components/Charts'
 
@@ -9,7 +9,7 @@ import { ChartCard, Field } from '@/components/Charts'
   plan,
   getDetail: loading.effects['plan/getPlans']
 }))
-class PlanDetail extends Component {
+class DesideDetail extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -35,7 +35,6 @@ class PlanDetail extends Component {
     this.setState({
       info: theInfo
     })
-
   }
 
   render() {
@@ -64,9 +63,17 @@ class PlanDetail extends Component {
             </ChartCard>
           </Col>
         </Row>
+        <Row style={{marginTop: 30}}>
+          <Col span={4}>
+            <Button type="primary" block>同意</Button>
+          </Col>
+          <Col span={4} offset={1}>
+            <Button type="danger" block>拒绝</Button>
+          </Col>
+        </Row>
       </div>
     )
   }
 }
 
-export default PlanDetail
+export default DesideDetail

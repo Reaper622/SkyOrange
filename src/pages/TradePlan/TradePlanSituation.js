@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import router from 'umi/router'
 import Trend from '@/components/Trend'
 import Yuan from '@/utils/Yuan'
-import { Row, Col, Icon, Tooltip, Card, Table } from 'antd'
+import { Row, Col, Icon, Tooltip, Card, Table, Divider } from 'antd'
 import numeral from 'numeral'
 import { connect } from 'dva'
 import { ChartCard, Field, WaterWave } from '@/components/Charts'
@@ -49,7 +49,12 @@ class TradePlanSituation  extends Component {
           title: '操作',
           key: 'action',
           render: (text, item) => (
-            <span className={styles.linkItem} onClick={() => this.checkDetail(item.solutionID)}>查看详情</span>
+            <div>
+              <span className={styles.linkItem} onClick={() => this.checkDetail(item.solutionID)}>查看详情</span>
+              <Divider type="vertical" />
+              <span className={styles.linkItem} onClick={() => this.desideDetail(item.solutionID)}>决策</span>
+            </div>
+
           )
         }
       ]
@@ -62,6 +67,10 @@ class TradePlanSituation  extends Component {
 
   checkDetail = (id) => {
     router.push(`/tradeplan/${id}`);
+  }
+
+  desideDetail = (id) => {
+    router.push(`/tradeplan/deside/${id}`)
   }
 
   getTradePlan = () => {
