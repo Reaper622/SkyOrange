@@ -11,7 +11,6 @@ import styles from './TradeItemInfoDetail.less'
   trade,
   getData: loading.effects['trade/getTradeItems'],
 }))
-
 class TradeItemInfoDetail extends Component {
   constructor(props){
     super(props);
@@ -86,7 +85,7 @@ class TradeItemInfoDetail extends Component {
 
   render() {
     const {columns} = this.state;
-    const {trade, getData} = this.props;
+    const {trade} = this.props;
     return (
       <div>
         <Table dataSource={trade.tradeItems} columns={columns} style={{background:'#fff'}} />

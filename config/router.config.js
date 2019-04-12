@@ -181,6 +181,12 @@ export default [
             path: '/tradeplan/total',
             name: '交易方案总体运行情况',
             component: './TradePlan/TradePlanSituation'
+          },
+          {
+            path: '/tradeplan/:id',
+            name: '单个交易方案运行情况',
+            component: './TradePlan/PlanDetail',
+            hideInMenu: true
           }
         ]
       },

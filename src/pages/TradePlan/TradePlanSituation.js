@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import router from 'umi/router'
 import Trend from '@/components/Trend'
 import Yuan from '@/utils/Yuan'
 import { Row, Col, Icon, Tooltip, Card, Table } from 'antd'
@@ -29,7 +30,10 @@ class TradePlanSituation  extends Component {
         {
           title: '状态',
           dataIndex: 'status',
-          key: 'status'
+          key: 'status',
+          render: (text) => (
+            <span>{text === 1? '通过' : '待评定'}</span>
+          )
         },
         {
           title: '交易额',
@@ -56,12 +60,8 @@ class TradePlanSituation  extends Component {
     this.getTradePlan()
   }
 
-  componentDidMount() {
-    console.log(this.props)
-  }
-
   checkDetail = (id) => {
-    
+    router.push(`/tradeplan/${id}`);
   }
 
   getTradePlan = () => {
