@@ -10,16 +10,22 @@ class InvestorInfoManagement extends PureComponent {
   constructor(props){
     super(props)
     this.state = {
-      user: {
         loginName: 'investor',
         password: 'skyorange',
         realName: 'skyorange',
         email: '12345678@email.com',
         phone: '12345678901',
         lastLoginTime: '2019-4-13'
-      }
     }
   }
+
+  changeState = (value, index) => {
+    this.setState({
+      [index]: value
+    })
+  }
+
+
 
   render() {
     const formItemLayout = {
@@ -29,7 +35,7 @@ class InvestorInfoManagement extends PureComponent {
     const buttonItemLayout ={
       wrapperCol: { span: 14, offset: 4 },
     };
-    const { user } = this.state;
+    const  user  = this.state;
     return (
       <Card bordered={false}>
         <Form layout="horizontal">
@@ -43,7 +49,7 @@ class InvestorInfoManagement extends PureComponent {
             label="密码"
             {...formItemLayout}
           >
-            <Input value={user.password} />
+            <Input value={user.password} onChange={e => this.changeState(e.target.value, 'password')} />
           </Form.Item>
           <Form.Item
             label="姓名"
@@ -55,13 +61,13 @@ class InvestorInfoManagement extends PureComponent {
             label="邮箱"
             {...formItemLayout}
           >
-            <Input value={user.email} />
+            <Input value={user.email} onChange={e => this.changeState(e.target.value, 'email')} />
           </Form.Item>
           <Form.Item
             label="手机"
             {...formItemLayout}
           >
-            <Input value={user.phone} />
+            <Input value={user.phone} onChange={e => this.changeState(e.target.value, 'phone')} />
           </Form.Item>
           <Form.Item
             label="最后一次登录时间"
