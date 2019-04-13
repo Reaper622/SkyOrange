@@ -38,7 +38,10 @@ class TradePlanSituation  extends Component {
         {
           title: '交易额',
           dataIndex: 'tradeMoney',
-          key: 'tradeMoney'
+          key: 'tradeMoney',
+          render: (text) => (
+            <Yuan>{text}</Yuan>
+          )
         },
         {
           title: '交易者',
