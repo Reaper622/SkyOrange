@@ -54,7 +54,6 @@ class TradePlanSituation  extends Component {
               <Divider type="vertical" />
               <span className={styles.linkItem} onClick={() => this.desideDetail(item.solutionID)}>决策</span>
             </div>
-
           )
         }
       ]

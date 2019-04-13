@@ -196,6 +196,20 @@ export default [
           }
         ]
       },
+      // 交易决策管理
+      {
+        path: '/tradedecision',
+        icon: 'schedule',
+        name: '交易决策管理',
+        authority: ['admin', 'trader'],
+        routes: [
+          {
+            path: '/tradedecision/admin',
+            name: '管理者决策',
+            component: './TradeDecision/AdminDecision'
+          }
+        ]
+      },
       // 404页面
       {component: '404'}
     ]
