@@ -206,7 +206,13 @@ export default [
           {
             path: '/tradedecision/admin',
             name: '管理者决策',
-            component: './TradeDecision/AdminDecision'
+            component: './TradeDecision/AdminDecision',
+            authority: ['admin']
+          },
+          {
+            path: '/tradedecision/detail',
+            name: '判断分析',
+            component: './TradeDecision/AdminDecisionDetail'
           }
         ]
       },
