@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Yuan from '@/utils/Yuan'
 import { connect } from 'dva'
-import { Row, Col, Icon, Tooltip, Card, Table, Divider } from 'antd'
+import { Table, Divider } from 'antd'
 import styles from './AdminDecision.less'
 
 @connect(({ decision, loading}) => ({

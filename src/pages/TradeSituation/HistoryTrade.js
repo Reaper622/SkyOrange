@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Row, Col, Table, DatePicker} from 'antd'
 import { connect } from 'dva'
+
 const { RangePicker } = DatePicker;
 
 @connect(({ history, loading}) => ({
@@ -78,7 +79,6 @@ class HistoryTrade extends Component {
 
 
   onChange = (date, dateString) => {
-    console.log(date, dateString);
     this.getRangeData(dateString[0], dateString[1]);
   }
 

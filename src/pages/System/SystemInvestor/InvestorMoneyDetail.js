@@ -16,8 +16,7 @@ class InvestorMoneyDetail extends Component {
     super(props);
     this.state = {
       sortedInfo: null,
-      type: '',
-      moneyBelow: 1000,
+      // moneyBelow: 1000,
       details: []
     }
   }
@@ -27,16 +26,18 @@ class InvestorMoneyDetail extends Component {
   }
 
   handleTypeChange = (e) => {
+    const {system} = this.props;
+    const newList = system.details.filter(v => (v.action === e.target.value))
     this.setState({
-      type: e.target.value
+      details: newList
     })
   }
 
-  handleMoneyChange = (e) => {
-    this.setState({
-      moneyBelow: e
-    })
-  }
+  // handleMoneyChange = (e) => {
+  //   this.setState({
+  //     moneyBelow: e
+  //   })
+  // }
 
   handleTableChange = (pagination, filters, sorter) => {
     this.setState({
@@ -64,9 +65,9 @@ class InvestorMoneyDetail extends Component {
       labelCol: { span: 6 },
       wrapperCol: { span: 8, offset: 5 },
     };
-    const buttonItemLayout = {
-      wrapperCol: { span: 14, offset: 10 },
-    };
+    // const buttonItemLayout = {
+    //   wrapperCol: { span: 14, offset: 10 },
+    // };
     const tableClomuns = [
       {
         title: '交易人姓名',
@@ -111,13 +112,13 @@ class InvestorMoneyDetail extends Component {
             label="流动类型"
             {...formItemLayout}
           >
-            <RadioGroup style={{width:200}} defaultValue="转入" onChange={this.handleTypeCHange}>
-              <Radio.Button value="转入">转入</Radio.Button>
-              <Radio.Button value="转出">转出</Radio.Button>
-              <Radio.Button value="投资">投资</Radio.Button>
+            <RadioGroup style={{width:200}} onChange={e => this.handleTypeChange(e)}>
+              <Radio.Button value="存款">存款</Radio.Button>
+              <Radio.Button value="取款">取款</Radio.Button>
+              <Radio.Button value="交易">交易</Radio.Button>
             </RadioGroup>
           </Form.Item>
-          <Form.Item
+          {/* <Form.Item
             {...formItemLayout}
           >
             <Select
@@ -135,7 +136,7 @@ class InvestorMoneyDetail extends Component {
           </Form.Item>
           <Form.Item {...buttonItemLayout}>
             <Button type="primary" icon="search">查找</Button>
-          </Form.Item>
+          </Form.Item> */}
         </Form>
         <Table style={{background: '#ffffff', marginTop: 50}} columns={tableClomuns} dataSource={details} onChange={this.handleTableChange} />
       </div>
