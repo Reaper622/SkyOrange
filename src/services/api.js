@@ -140,3 +140,7 @@ export async function getTradePlans() {
 export async function getMoneyDetails() {
   return request('/api/money_details');
 }
+
+export async function getUserList() {
+  return request('/api/user_list');
+}

@@ -552,6 +552,45 @@ function getMoneyDetails(req, res) {
   return res.json(moneyDetails);
 }
 
+const userList = [
+  {
+    loginName:'investor',
+    password: 'skyorange',
+    realName: '张三',
+    email: '123456@email.com',
+    phone: '12345678901',
+    lastLoginTime: '2019-4-14'
+  },
+  {
+    loginName:'trader',
+    password: 'skyorange',
+    realName: '张三',
+    email: '123456@email.com',
+    phone: '12345678901',
+    lastLoginTime: '2019-4-14'
+  },
+  {
+    loginName:'shareholder',
+    password: 'skyorange',
+    realName: '张三',
+    email: '123456@email.com',
+    phone: '12345678901',
+    lastLoginTime: '2019-4-14'
+  },
+  {
+    loginName:'admin',
+    password: 'skyorange',
+    realName: '张三',
+    email: '123456@email.com',
+    phone: '12345678901',
+    lastLoginTime: '2019-4-14'
+  }
+]
+
+function getUserList(req, res) {
+  return res.json(userList);
+}
+
 export default {
   'GET /api/project/notice': getNotice,
   'GET /api/activities': getActivities,
@@ -567,5 +606,6 @@ export default {
   'GET /api/fake_trade_items': fakeTradeItems,
   'GET /api/fake_history_trade': getHistoryTrade,
   'GET /api/fake_plans': getFakePlans,
-  'GET /api/money_details': getMoneyDetails
+  'GET /api/money_details': getMoneyDetails,
+  'GET /api/user_list': getUserList
 };
