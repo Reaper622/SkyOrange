@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
-import { Form, Button, Radio, Select, List, Table } from 'antd'
+import { Form, Button, Radio, Select, Table } from 'antd'
+import { connect } from 'dva'
 import RadioGroup from 'antd/lib/radio/group';
 import Yuan from '@/utils/Yuan'
 
 const { Option } = Select;
 
+
+@connect(({ system, loading}) => ({
+  system,
+  getDetails: loading.effects['system/getDetails']
+}))
 class InvestorMoneyDetail extends Component {
   constructor(props) {
     super(props);
@@ -12,18 +18,12 @@ class InvestorMoneyDetail extends Component {
       sortedInfo: null,
       type: '',
       moneyBelow: 1000,
-      infos: [
-        {id:1, type:'转入', money: 1000, investorName: '张三'},
-        {id:2, type:'转出', money: 3000, investorName: '张三'},
-        {id:3, type:'投资', money: 3000, investorName: '张三'},
-        {id:4, type:'转入', money: 1000, investorName: '李四'},
-        {id:5, type:'转出', money: 3000, investorName: '李四'},
-        {id:6, type:'投资', money: 3000, investorName: '李四'},
-        {id:7, type:'转入', money: 1000, investorName: '王五'},
-        {id:8, type:'转出', money: 3000, investorName: '王五'},
-        {id:9, type:'投资', money: 3000, investorName: '王五'},
-      ]
+      details: []
     }
+  }
+
+  componentWillMount(){
+     this.getMoneyDetails()
   }
 
   handleTypeChange = (e) => {
@@ -44,8 +44,20 @@ class InvestorMoneyDetail extends Component {
     })
   }
 
+  getMoneyDetails = () => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'system/getDetails'
+    })
+    const {system} = this.props;
+    this.setState({
+      details: system.details
+    })
+  }
+
   render() {
-    const { infos } = this.state;
+    const { details } = this.state;
+
     let {sortedInfo } = this.state;
     sortedInfo = sortedInfo || {};
     const formItemLayout = {
@@ -57,23 +69,39 @@ class InvestorMoneyDetail extends Component {
     };
     const tableClomuns = [
       {
-        title: '类型',
-        dataIndex: 'type',
-        key: 'type'
+        title: '交易人姓名',
+        dataIndex: 'realName',
+        key: 'realName'
       },
       {
-        title:'资金',
-        dataIndex: 'money',
-        key: 'money',
+        title:'金额',
+        dataIndex: 'amount',
+        key: 'amount',
         sorter: (a, b) => a.money - b.money,
-        sortOrder: sortedInfo.columnKey === 'money' && sortedInfo.order
+        sortOrder: sortedInfo.columnKey === 'money' && sortedInfo.order,
+        render: (text) => {
+          return <Yuan>{text}</Yuan>
+        }
       },
       {
-        title: '投资人姓名',
-        dataIndex: 'investorName',
-        key: 'investorName',
-        sorter: (a, b) => a.investorName.length - b.investorName.length,
-        sortOrder: sortedInfo.columnKey === 'investorName' && sortedInfo.order
+        title: '行为',
+        dataIndex: 'action',
+        key: 'action'
+      },
+      {
+        title: '时间',
+        dataIndex: 'time',
+        key: 'time'
+      },
+      {
+        title: '交易编号',
+        dataIndex: 'tradeID',
+        key: 'tradeID'
+      },
+      {
+        title: '备注',
+        dataIndex: 'remarks',
+        key: 'remarks'
       }
     ]
     return (
@@ -109,7 +137,7 @@ class InvestorMoneyDetail extends Component {
             <Button type="primary" icon="search">查找</Button>
           </Form.Item>
         </Form>
-        <Table style={{background: '#ffffff', marginTop: 50}} columns={tableClomuns} dataSource={infos} onChange={this.handleTableChange} />
+        <Table style={{background: '#ffffff', marginTop: 50}} columns={tableClomuns} dataSource={details} onChange={this.handleTableChange} />
       </div>
     )
   }

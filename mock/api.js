@@ -472,6 +472,86 @@ function getFakePlans (req, res) {
   return res.json(fakePlans)
 }
 
+const moneyDetails = [
+  {
+    realName: '张三',
+    amount: 1000,
+    action: '存款',
+    time: '2019-4-13',
+    remarks: '备注'
+  },
+  {
+    realName: '张三',
+    amount: 3000,
+    action: '取款',
+    time: '2019-4-13',
+    remarks: '备注'
+  },
+  {
+    realName: '张三',
+    amount: 1000,
+    action: '交易',
+    time: '2019-4-13',
+    tradeID: '1',
+    remarks: '备注'
+  },
+  {
+    realName: '张三',
+    amount: 5000,
+    action: '存款',
+    time: '2019-4-13',
+    remarks: '备注'
+  },
+  {
+    realName: '张三',
+    amount: 3000,
+    action: '取款',
+    time: '2019-4-13',
+    remarks: '备注'
+  },
+  {
+    realName: '李四',
+    amount: 4000,
+    action: '交易',
+    time: '2019-4-13',
+    tradeID: '2',
+    remarks: '备注'
+  },
+  {
+    realName: '李四',
+    amount: 1000,
+    action: '存款',
+    time: '2019-4-13',
+    remarks: '备注'
+  },
+  {
+    realName: '李四',
+    amount: 1000,
+    action: '取款',
+    time: '2019-4-13',
+    remarks: '备注'
+  },
+  {
+    realName: '李四',
+    amount: 1000,
+    action: '存款',
+    time: '2019-4-13',
+    remarks: '备注'
+  },
+  {
+    realName: '李四',
+    amount: 1000,
+    action: '交易',
+    time: '2019-4-13',
+    tradeID: '3',
+    remarks: '备注'
+  },
+]
+
+function getMoneyDetails(req, res) {
+  return res.json(moneyDetails);
+}
+
 export default {
   'GET /api/project/notice': getNotice,
   'GET /api/activities': getActivities,
@@ -486,5 +566,6 @@ export default {
   'GET /api/captcha': getFakeCaptcha,
   'GET /api/fake_trade_items': fakeTradeItems,
   'GET /api/fake_history_trade': getHistoryTrade,
-  'GET /api/fake_plans': getFakePlans
+  'GET /api/fake_plans': getFakePlans,
+  'GET /api/money_details': getMoneyDetails
 };
