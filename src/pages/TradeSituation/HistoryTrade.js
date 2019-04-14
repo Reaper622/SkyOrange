@@ -108,6 +108,7 @@ class HistoryTrade extends Component {
 
 
   render() {
+    const {getHistoryTrade} = this.props;
     const { columns, tradeData } = this.state;
     return (
       <div>
@@ -117,7 +118,7 @@ class HistoryTrade extends Component {
             <RangePicker onChange={this.onChange} />
           </Col>
         </Row>
-        <Table style={{background: '#fff', marginTop: 50}} columns={columns} dataSource={tradeData} />
+        <Table style={{background: '#fff', marginTop: 50}} columns={columns} dataSource={tradeData} loading={getHistoryTrade} />
 
       </div>
     )

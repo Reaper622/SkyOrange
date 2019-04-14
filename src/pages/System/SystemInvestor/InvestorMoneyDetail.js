@@ -58,7 +58,7 @@ class InvestorMoneyDetail extends Component {
 
   render() {
     const { details } = this.state;
-
+    const {getDetails} = this.props;
     let {sortedInfo } = this.state;
     sortedInfo = sortedInfo || {};
     const formItemLayout = {
@@ -138,7 +138,7 @@ class InvestorMoneyDetail extends Component {
             <Button type="primary" icon="search">查找</Button>
           </Form.Item> */}
         </Form>
-        <Table style={{background: '#ffffff', marginTop: 50}} columns={tableClomuns} dataSource={details} onChange={this.handleTableChange} />
+        <Table style={{background: '#ffffff', marginTop: 50}} columns={tableClomuns} dataSource={details} onChange={this.handleTableChange} loading={getDetails} />
       </div>
     )
   }

@@ -83,7 +83,7 @@ class TradePlanSituation  extends Component {
   }
 
   render() {
-    const {plan} = this.props;
+    const {plan, getPlan} = this.props;
     const {columns} = this.state;
     return (
       <div>
@@ -121,7 +121,7 @@ class TradePlanSituation  extends Component {
             </Card>
           </Col>
         </Row>
-        <Table columns={columns} dataSource={plan.plans} style={{background: '#fff', marginTop: 50}} />
+        <Table columns={columns} dataSource={plan.plans} style={{background: '#fff', marginTop: 50}} loading={getPlan} />
       </div>
     )
   }

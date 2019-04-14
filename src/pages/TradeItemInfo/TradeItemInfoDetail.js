@@ -85,10 +85,10 @@ class TradeItemInfoDetail extends Component {
 
   render() {
     const {columns} = this.state;
-    const {trade} = this.props;
+    const {trade, getData} = this.props;
     return (
       <div>
-        <Table dataSource={trade.tradeItems} columns={columns} style={{background:'#fff'}} />
+        <Table dataSource={trade.tradeItems} columns={columns} style={{background:'#fff'}} loading={getData} />
       </div>
     )
   }

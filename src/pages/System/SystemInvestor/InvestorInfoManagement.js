@@ -44,7 +44,7 @@ class InvestorInfoManagement extends Component{
   }
 
   render() {
-    const {system} = this.props;
+    const {system, getUser} = this.props;
     return (
       <div>
         <PageHeader
@@ -52,7 +52,7 @@ class InvestorInfoManagement extends Component{
           content={HeaderContent}
           extraContent={extra}
         />
-        <Row gutter={16}>
+        <Row gutter={16} loading={getUser}>
           {system.userList.map(item => (
             <Col span={6}>
               <Card
