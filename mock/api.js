@@ -78,6 +78,19 @@ const tradeItems = [
     bid: 20000,
     high: 30000,
     low: 5000,
+    position: 123456,
+    floating: 1234567,
+    avgPrice: 123456
+  },
+  {
+    item: '对象名称3',
+    ask: 10000,
+    bid: 20000,
+    high: 30000,
+    low: 5000,
+    position: 123456,
+    floating: 1234567,
+    avgPrice: 123456
   }
 ]
 
