@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import router from 'umi/router'
 import Yuan from '@/utils/Yuan'
-import { Table, Card, Row, Col } from 'antd'
+import { Table, Card, Row, Col, Divider } from 'antd'
 import { connect } from 'dva';
 
 import styles from './TradeItemInfoDetail.less'
@@ -56,13 +56,6 @@ class TradeItemInfoDetail extends Component {
           title: '头寸均价',
           dataIndex: 'avgPrice',
           key: 'avgPrice'
-        },
-        {
-          title: '操作',
-          key: 'action',
-          render: (text, item) => (
-            <span className={styles.linkItem} onClick={() => this.checkDetail(item.item)}>查看详情</span>
-          )
         }
       ]
     }
@@ -94,16 +87,28 @@ class TradeItemInfoDetail extends Component {
           {trade.tradeItems.map(item => (
             <Col xs={20} sm={16} md={12} lg={10} xl={6} style={{marginBottom: 10}}>
               <Card
-                title={item.item}
-                extra={<span className={styles.linkItem} onClick={() => this.checkDetail(item.item)}>查看详情</span>}
+                title={<span className={styles.linkItem} onClick={() => this.checkDetail(item.item)}>{item.item}</span>}
+                extra={<div><Yuan>{item.bid}</Yuan><Divider type="vertical" /><Yuan>{item.ask}</Yuan></div>}
               >
-                <p> 买价: {item.ask? <Yuan>{item.ask}</Yuan>: ''}</p>
-                <p> 卖价: {item.bid? <Yuan>{item.bid}</Yuan>: ''}</p>
-                <p> 最高: {item.high? <Yuan>{item.high}</Yuan>: ''}</p>
-                <p> 最低: {item.low? <Yuan>{item.low}</Yuan>: ''}</p>
-                <p> 敞口头寸: {item.position? <Yuan>{item.position}</Yuan>: ''}</p>
-                <p> 浮亏/盈: {item.floating? <Yuan>{item.floating}</Yuan>: ''}</p>
-                <p> 头寸均价: {item.avgPrice? <Yuan>{item.avgPrice}</Yuan>: ''}</p>
+                <Row type="flex" justify="start" style={{marginBottom: 30}}>
+                  <Col span={8}>
+                    <Yuan>{item.low}</Yuan>
+                  </Col>
+                  <Col span={8}>
+                    <Yuan>{item.high}</Yuan>
+                  </Col>
+                  <Col span={8}>
+                    <Yuan>{item.floating}</Yuan>
+                  </Col>
+                </Row>
+                <Row type="flex" justify="start">
+                  <Col span={8}>
+                    <Yuan>{item.position}</Yuan>
+                  </Col>
+                  <Col span={8}>
+                    <Yuan>{item.avgPrice}</Yuan>
+                  </Col>
+                </Row>
               </Card>
             </Col>
           ))}
