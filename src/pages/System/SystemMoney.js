@@ -37,8 +37,8 @@ class SystemMoney extends Component {
     const {pieData} = this.state
     return (
       <GridContent>
-        <Row className={styles.row} style={{height:300, marginBottom: 50}}>
-          <Col span={6}>
+        <Row className={styles.row}>
+          <Col span={8}>
             <Suspense fallback={<PageLoading />}>
               <ChartCard
                 title="资金总额"
@@ -68,7 +68,9 @@ class SystemMoney extends Component {
               </ChartCard>
             </Suspense>
           </Col>
-          <Col offset={4} span={12}>
+        </Row>
+        <Row>
+          <Col span={12}>
             <Suspense fallback={<PageLoading />}>
               <Card
                 className={styles.salesCard}
