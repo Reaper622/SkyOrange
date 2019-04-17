@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import router from 'umi/router'
-import { Table, Card, Row, Col, Button } from 'antd'
+import Yuan from '@/utils/Yuan'
+import { Table, Card, Row, Col } from 'antd'
 import { connect } from 'dva';
 
 import styles from './TradeItemInfoDetail.less'
@@ -91,18 +92,18 @@ class TradeItemInfoDetail extends Component {
         {/* <Table dataSource={trade.tradeItems} columns={columns} style={{background:'#fff'}} loading={getData} /> */}
         <Row type="flex" justify="space-around">
           {trade.tradeItems.map(item => (
-            <Col xs={20} sm={16} md={12} lg={10} xl={6}>
+            <Col xs={20} sm={16} md={12} lg={10} xl={6} style={{marginBottom: 10}}>
               <Card
                 title={item.item}
                 extra={<span className={styles.linkItem} onClick={() => this.checkDetail(item.item)}>查看详情</span>}
               >
-                <p>{`买价: ${item.ask? item.ask: ''}`}</p>
-                <p>{`卖价: ${item.bid? item.bid: ''}`}</p>
-                <p>{`最高: ${item.high? item.high: ''}`}</p>
-                <p>{`最低: ${item.low? item.low: ''}`}</p>
-                <p>{`敞口头寸: ${item.position? item.position: ''}`}</p>
-                <p>{`浮亏/盈: ${item.floating? item.floating: ''}`}</p>
-                <p>{`头寸均价: ${item.avgPrice? item.avgPrice: ''}`}</p>
+                <p> 买价: {item.ask? <Yuan>{item.ask}</Yuan>: ''}</p>
+                <p> 卖价: {item.bid? <Yuan>{item.bid}</Yuan>: ''}</p>
+                <p> 最高: {item.high? <Yuan>{item.high}</Yuan>: ''}</p>
+                <p> 最低: {item.low? <Yuan>{item.low}</Yuan>: ''}</p>
+                <p> 敞口头寸: {item.position? <Yuan>{item.position}</Yuan>: ''}</p>
+                <p> 浮亏/盈: {item.floating? <Yuan>{item.floating}</Yuan>: ''}</p>
+                <p> 头寸均价: {item.avgPrice? <Yuan>{item.avgPrice}</Yuan>: ''}</p>
               </Card>
             </Col>
           ))}
