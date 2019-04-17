@@ -136,7 +136,14 @@ export default [
           {
             path: '/tradeitem/detail',
             name: '交易对象价格明细',
-            component: './TradeItemInfo/TradeItemInfoDetail'
+            component: './TradeItemInfo/TradeItemInfoDetail',
+            authority: ['trader', 'admin']
+          },
+          {
+            path: '/tradeitem/detail2',
+            name: '交易对象价格明细',
+            component: './TradeItemInfo/DetailForShareholder',
+            authority: ['shareholder']
           },
           {
             path: '/tradeitem/detail/:id',
