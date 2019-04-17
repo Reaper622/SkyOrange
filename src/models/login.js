@@ -37,21 +37,13 @@ export default {
       // 成功登录
       if (response.status === 'ok') {
         reloadAuthorized();
-        const urlParams = new URL(window.location.href);
-        const params = getPageQuery();
-        let { redirect } = params;
-        if (redirect) {
-          const redirectUrlParams = new URL(redirect);
-          if (redirectUrlParams.origin === urlParams.origin) {
-            redirect = redirect.substr(urlParams.origin.length);
-            if (redirect.match(/^\/.*#/)) {
-              redirect = redirect.substr(redirect.indexOf('#') + 1);
-            }
-          } else {
-            redirect = null;
-          }
+        if (response.currentAuthority === 'investor') {
+          yield put(routerRedux.replace('/investor/info'));
+        } else if(response.currentAuthority === 'admin') {
+          yield put(routerRedux.replace('/system/money-situation'))
+        } else {
+          yield put(routerRedux.replace('/'))
         }
-        yield put(routerRedux.replace(redirect || '/'));
       }
     },
     // 注销操作
