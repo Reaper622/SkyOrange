@@ -113,8 +113,8 @@ class HistoryTrade extends Component {
     return (
       <div>
         <Row>
-          <Col span={4}>选择时间段</Col>
-          <Col span={6}>
+          <Col span={5}>选择时间段</Col>
+          <Col xs={12} sm={10} md={8} lg={8} xl={8}>
             <RangePicker onChange={this.onChange} />
           </Col>
         </Row>

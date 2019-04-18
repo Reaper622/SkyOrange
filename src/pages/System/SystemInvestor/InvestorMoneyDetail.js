@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Radio, Select, Table } from 'antd'
+import { Form, Button, Radio, Select, Table, Card, Row, Col} from 'antd'
 import { connect } from 'dva'
 import RadioGroup from 'antd/lib/radio/group';
 import Yuan from '@/utils/Yuan'
@@ -138,7 +138,37 @@ class InvestorMoneyDetail extends Component {
             <Button type="primary" icon="search">查找</Button>
           </Form.Item> */}
         </Form>
-        <Table style={{background: '#ffffff', marginTop: 50}} columns={tableClomuns} dataSource={details} onChange={this.handleTableChange} loading={getDetails} />
+        <Row gutter={8}>
+          {details.map(item => (
+            <Col xs={20} sm={16} md={12} lg={10} xl={6} style={{marginBottom: 10}}>
+              <Card
+                title={<span>{item.realName}</span>}
+                extra={<span>{item.tradeID}</span>}
+              >
+                <Row type="flex" justify="start" style={{marginBottom: 30}}>
+                  <Col span={8}>
+                    <Yuan>{item.amount}</Yuan>
+                  </Col>
+                  <Col span={8}>
+                    <span>{item.action}</span>
+                  </Col>
+                </Row>
+                <Row type="flex" justify="start" style={{marginBottom: 30}}>
+                  <Col span={16}>
+                    {item.time}
+                  </Col>
+                </Row>
+                <Row type="flex" justify="start" style={{marginBottom: 30}}>
+                  <Col span={16}>
+                    {item.remarks}
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+
+        {/* <Table style={{background: '#ffffff', marginTop: 50}} columns={tableClomuns} dataSource={details} onChange={this.handleTableChange} loading={getDetails} /> */}
       </div>
     )
   }
