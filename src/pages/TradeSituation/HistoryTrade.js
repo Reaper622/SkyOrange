@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import {Row, Col, Table, DatePicker} from 'antd'
+import {Row, Col, Table, DatePicker, Card} from 'antd'
 import { connect } from 'dva'
+import Yuan from '@/utils/Yuan'
 
 const { RangePicker } = DatePicker;
 
@@ -118,7 +119,50 @@ class HistoryTrade extends Component {
             <RangePicker onChange={this.onChange} />
           </Col>
         </Row>
-        <Table style={{background: '#fff', marginTop: 50}} columns={columns} dataSource={tradeData} loading={getHistoryTrade} />
+        <Row type="flex" justify="start" gutter={8}>
+          {tradeData.map(item => (
+            <Col xs={20} sm={16} md={12} lg={10} xl={6} style={{marginBottom: 10}}>
+              <Card
+                title={<span>{item.solutionID}</span>}
+                extra={item.accountID}
+              >
+                <Row>
+                  <Col span={8}>
+                    <span>{item.item}</span>
+                  </Col>
+                  <Col span={8}>
+                    <Yuan>{item.position}</Yuan>
+                  </Col>
+                  <Col span={8}>
+                    <span>{item.direction}</span>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span={8}>
+                    <Yuan>{item.price}</Yuan>
+                  </Col>
+                  <Col span={8}>
+                    <Yuan>{item.income}</Yuan>
+                  </Col>
+                  <Col span={8}>
+                    <Yuan>{item.commission}</Yuan>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span={16}>
+                    <span>{item.time}</span>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span={16}>
+                    <span>{item.remarks}</span>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        {/* <Table style={{background: '#fff', marginTop: 50}} columns={columns} dataSource={tradeData} loading={getHistoryTrade} /> */}
 
       </div>
     )
